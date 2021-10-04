@@ -34,8 +34,16 @@ router.get('/logs/:id/edit',async(req,res)=>{
     }
 })
 router.delete('/logs/:id',async (req,res)=>{
+    let currentTime = new Date();
+
+let currentOffset = currentTime.getTimezoneOffset();
+
+let ISTOffset = 330;   // IST offset UTC +5:30 
+
+let ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
+
+let time = ISTTime.getHours()+":"+ISTTime.getMinutes();
     const {id}=req.params;
-    const date=new Date();
     const user=await Visitor.findById(id);
     const time=date.toLocaleTimeString();
     await Visitor.findByIdAndDelete(id,{new:true});
