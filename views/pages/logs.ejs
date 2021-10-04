@@ -14,6 +14,7 @@
       <div class="card-body">
         <h5 class="card-title"><%=val.name%></h5>
         <i class="card-text" style="font-size:12px"><%=val.phone%></i>
+        <p class="card-text" style="font-size:14px"><%=val.email%></p>
         <p class="card-text">Time: <%=val.time%></p>
         <p class="card-text"><small class="text-muted">Body part to train: <%=val.body%></small></p>
         <form action="/logs/<%=val._id%>?_method=DELETE" class="d-inline-block" method="post">
