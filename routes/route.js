@@ -45,7 +45,6 @@ let ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000
 let time = ISTTime.getHours()+":"+ISTTime.getMinutes();
     const {id}=req.params;
     const user=await Visitor.findById(id);
-    const time=date.toLocaleTimeString();
     await Visitor.findByIdAndDelete(id,{new:true});
     sendTextMessage(`Hey ${user.name} , You left the gym at ${time}.Your Body Part to train was ${user.body}.Stay safe Stay Healthy`,`+91${user.phone}`);
     sendMail(`${user.email}`,'fitness galaxy gym',`Hey ${user.name} , You left the gym at ${time}.Your body part to train was ${user.body}.Stay safe Stay Healthy`);
